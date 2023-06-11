@@ -26,4 +26,7 @@ void dae::MoveComponent::Update()
 
 void dae::MoveComponent::Render()
 {
+
 }
+
+
