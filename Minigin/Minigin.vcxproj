@@ -180,6 +180,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="AudioNavigator.h" />
+    <ClInclude Include="ColissionComponent.h" />
     <ClInclude Include="Commands.h" />
     <ClInclude Include="DeathObserver.h" />
     <ClInclude Include="HealthComponent.h" />
@@ -191,6 +192,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AudioNavigator.cpp" />
+    <ClCompile Include="ColissionComponent.cpp" />
     <ClCompile Include="Commands.cpp" />
     <ClCompile Include="DeathObserver.cpp" />
     <ClCompile Include="HealthComponent.cpp" />

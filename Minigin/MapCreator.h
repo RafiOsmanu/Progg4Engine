@@ -1,22 +1,12 @@
 #pragma once
-#include <glm/glm.hpp>
 #include <vector>
-#include <memory>
 #include "BaseComponent.h"
-#include "Texture2D.h"
 #include "ResourceManager.h"
+#include "DataTypes.h"
 
 
 namespace dae
 {
-	struct Cube
-	{
-		glm::vec2 position;  // The position of the cube in world space
-		float size;          // The size of the cube
-		glm::vec3 color;     // The color of the cube
-		std::shared_ptr<Texture2D> texture;
-	};
-
 	class MapCreator : public BaseComponent
 	{
 		std::weak_ptr<GameObject> m_pOwner;
@@ -35,6 +25,7 @@ namespace dae
 		void Render() override;
 
 		void CreateMap();
+		std::vector<Cube>& GetCubes() { return m_Cubes; }
 
 	protected:
 		std::weak_ptr<GameObject> GetOwner() const { return m_pOwner; }
@@ -43,7 +34,6 @@ namespace dae
 		//DataMembers
 		int m_NumRows;
 		std::vector<Cube> m_Cubes;
-
 	};
 }
 

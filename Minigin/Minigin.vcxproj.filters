@@ -37,6 +37,9 @@
     <ClInclude Include="ServiceLocator.h">
       <Filter>Game Files</Filter>
     </ClInclude>
+    <ClInclude Include="ColissionComponent.h">
+      <Filter>Components</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -65,6 +68,9 @@
     </ClCompile>
     <ClCompile Include="AudioNavigator.cpp">
       <Filter>Game Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ColissionComponent.cpp">
+      <Filter>Components</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
