@@ -12,16 +12,16 @@ dae::MoveCommand::MoveCommand(const std::shared_ptr<GameObject> actor, float spe
 	switch (m_Input)
 	{
 	case Left:
-		m_Direction = { -1,-1,0 };
+		m_Direction = { -0.70f,-1,0 };
 		break;
 	case Right:
-		m_Direction = { 1,1,0 };
+		m_Direction = { 0.70f,1,0 };
 		break;
 	case Up:
-		m_Direction = { 1,-1,0 };
+		m_Direction = { 0.70f,-1,0 };
 		break;
 	case Down:
-		m_Direction = { -1,1,0 };
+		m_Direction = { -0.70f,1,0 };
 		break;
 	}
 
@@ -30,10 +30,11 @@ dae::MoveCommand::MoveCommand(const std::shared_ptr<GameObject> actor, float spe
 
 void dae::MoveCommand::Execute()
 {
-	if (m_IsMoving) return;
+	if (m_IsMoving || m_Actor->IsMoving()) return;
 
 	m_OgPos = m_Actor->GetLocalPosition();
 	m_IsMoving = true;
+	m_Actor->SetIsMoving(true);
 	
 }
 
@@ -41,14 +42,24 @@ void dae::MoveCommand::Update()
 {
 	if (m_IsMoving)
 	{
-		if (glm::distance(m_Actor->GetLocalPosition(), m_OgPos) < 15.f)
+		if (glm::distance(m_Actor->GetLocalPosition(), m_OgPos) < 32.5f)
 		{
 			auto translation = glm::vec3(m_Actor->GetLocalPosition(), 0) + (m_Direction * m_Speed * DeltaTime::GetInstance().getDeltaTime());
 			m_Actor->SetLocalPosition({ translation.x, translation.y });
 		}
 		else
 		{
-			m_IsMoving = false;
+			if (m_Timer >= m_MaxTime)
+			{
+				m_IsMoving = false;
+				m_Actor->SetIsMoving(false);
+				m_Timer = 0.f;
+			}
+			else
+			{
+				m_Timer += DeltaTime::GetInstance().getDeltaTime();
+			}
+			
 		}
 	}
 }

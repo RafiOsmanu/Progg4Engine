@@ -4,6 +4,10 @@ Keyboard::Keyboard()
 {
 	m_pCurrentKeyboardState = new Uint8[SDL_NUM_SCANCODES];
 	m_pPreviousKeyboardState = new Uint8[SDL_NUM_SCANCODES];
+
+	memcpy(m_pPreviousKeyboardState, SDL_GetKeyboardState(nullptr), SDL_NUM_SCANCODES);
+	memcpy(m_pCurrentKeyboardState, SDL_GetKeyboardState(nullptr), SDL_NUM_SCANCODES);
+
 }
 
 Keyboard::~Keyboard()

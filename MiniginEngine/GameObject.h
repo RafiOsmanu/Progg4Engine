@@ -26,6 +26,8 @@ namespace dae
 		void AddChild(std::shared_ptr <GameObject> child);
 		void SetPositionDirty();
 		bool HasParent() {return m_pParent.lock() != nullptr; }
+		bool IsMoving() { return m_IsMoving; }
+		void SetIsMoving(bool isMoving) { m_IsMoving = isMoving; }
 		
 
 		template <typename T> std::shared_ptr<T> GetComponent()
@@ -55,6 +57,7 @@ namespace dae
 
 		std::weak_ptr <GameObject> m_pParent;
 		std::vector<std::weak_ptr <GameObject>> m_pChildren;
+		bool m_IsMoving = false;
 
 		bool m_IsPositionDirty = false;
 

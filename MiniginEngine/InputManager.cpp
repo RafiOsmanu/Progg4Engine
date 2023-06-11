@@ -67,8 +67,7 @@ bool dae::InputManager::ProcessInput()
 			}
 			break;
 		case SDL_KEYUP:
-			if (keyboard->IsUp(button) && !
-				pKeys[button])
+			if (keyboard->IsUp(button))
 			{
 				comm.second->Execute();
 			}

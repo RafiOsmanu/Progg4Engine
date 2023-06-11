@@ -22,9 +22,11 @@ namespace dae
 
 		PlayerInput m_Input;
 
-
 		bool m_IsMoving{ false };
 		bool m_IsInitialized{ false };
+
+		float m_Timer{ 0.f };
+		float m_MaxTime{ 0.25f };
 	};
 
 	class DamageCommand final : public Command
