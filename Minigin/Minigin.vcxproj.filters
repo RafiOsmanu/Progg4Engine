@@ -40,6 +40,9 @@
     <ClInclude Include="ColissionComponent.h">
       <Filter>Components</Filter>
     </ClInclude>
+    <ClInclude Include="GameStateComponent.h">
+      <Filter>Components</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -70,6 +73,9 @@
       <Filter>Game Files</Filter>
     </ClCompile>
     <ClCompile Include="ColissionComponent.cpp">
+      <Filter>Components</Filter>
+    </ClCompile>
+    <ClCompile Include="GameStateComponent.cpp">
       <Filter>Components</Filter>
     </ClCompile>
   </ItemGroup>

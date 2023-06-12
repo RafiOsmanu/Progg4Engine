@@ -10,8 +10,8 @@ namespace Engine
 		static AudioNavigatorNull m_DefaultSS;
 
 	public:
-		static BaseAudioNavigator& GetSoundSystem() { return *m_pSSInstance.get(); }
-		static void RegisterSoundSystem(BaseAudioNavigator* pSoundSystem)
+		static BaseAudioNavigator& GetAudioSystem() { return *m_pSSInstance.get(); }
+		static void RegisterAudioSystem(BaseAudioNavigator* pSoundSystem)
 		{
 			m_pSSInstance.reset(pSoundSystem == nullptr ? &m_DefaultSS : pSoundSystem);
 		}

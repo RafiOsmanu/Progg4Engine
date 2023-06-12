@@ -2,6 +2,7 @@
 #include "GameObject.h"
 #include "ResourceManager.h"
 #include "Renderer.h"
+#include "Commands.h"
 
 namespace dae
 {
@@ -18,6 +19,10 @@ namespace dae
 				{
 					cube.texture = ResourceManager::GetInstance().LoadTexture("ActiveCube.png");
 					cube.isActive = true;
+				}
+				else if(IsNotColliding())
+				{
+					m_IsPlayerDead = true;
 				}
 			}
 		}
@@ -43,6 +48,20 @@ namespace dae
 		if (playerPos.y + 10 < mapCube.position.y || playerPos.y > cubeBottom)
 			return false;
 
+		return true;
+	}
+	bool ColissionComponent::IsNotColliding()
+	{
+		if (!m_pOwner.lock().get()->IsMoving())
+		{
+			for (Cube& cube : m_MapCubes)
+			{
+				if (IsColliding(m_pOwner.lock().get()->GetLocalPosition(), cube))
+				{
+					return false;
+				}
+			}
+		}
 		return true;
 	}
 }

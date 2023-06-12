@@ -2,6 +2,7 @@
 #include "DeltaTime.h"
 #include "HealthComponent.h"
 #include "ScoreComponent.h"
+#include "ServiceLocator.h"
 
 dae::MoveCommand::MoveCommand(const std::shared_ptr<GameObject> actor, float speed, PlayerInput input)
 	:m_Actor{actor}
@@ -30,12 +31,12 @@ dae::MoveCommand::MoveCommand(const std::shared_ptr<GameObject> actor, float spe
 
 void dae::MoveCommand::Execute()
 {
-	if (m_IsMoving || m_Actor->IsMoving()) return;
+	if (m_IsMoving || m_Actor->IsMoving() || m_IsDisableInput) return;
 
 	m_OgPos = m_Actor->GetLocalPosition();
 	m_IsMoving = true;
 	m_Actor->SetIsMoving(true);
-	
+	Engine::ServiceLocator::GetAudioSystem().Play((unsigned short)Engine::Sound::QbertJump, 10.f);
 }
 
 void dae::MoveCommand::Update()

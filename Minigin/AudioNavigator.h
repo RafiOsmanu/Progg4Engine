@@ -3,7 +3,15 @@
 #include <memory>
 namespace Engine
 {
-	using SoundId = unsigned int;
+	using SoundId = unsigned short;
+
+	enum class Sound : unsigned short
+	{
+		QbertHit,
+		QbertJump,
+		QbertFall,
+		QbertWin
+	};
 
 	class BaseAudioNavigator
 	{
@@ -27,7 +35,7 @@ namespace Engine
 
 		virtual void InitMixer() {};
 		virtual void CloseMixer() {};
-		virtual bool IsMixerClosed() {};
+		virtual bool IsMixerClosed() { return false; }
 	};
 
 	class Sdl_AudioNavigator final : public BaseAudioNavigator

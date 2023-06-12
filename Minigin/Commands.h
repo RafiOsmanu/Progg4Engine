@@ -14,6 +14,7 @@ namespace dae
 		MoveCommand(const std::shared_ptr<GameObject> actor, float speed, PlayerInput input);
 		virtual void Execute() override;
 		virtual void Update() override;
+
 	private:
 		std::shared_ptr<GameObject> m_Actor;
 		float m_Speed;
@@ -24,6 +25,7 @@ namespace dae
 
 		bool m_IsMoving{ false };
 		bool m_IsInitialized{ false };
+		bool m_IsDisableInput{ false };
 
 		float m_Timer{ 0.f };
 		float m_MaxTime{ 0.25f };

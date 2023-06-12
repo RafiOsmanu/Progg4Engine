@@ -49,6 +49,10 @@ bool dae::InputManager::ProcessInput()
 		
 	}
 
+
+	if(keyboard->GetDisableInput())
+		return true;
+
 	//update keyboard
 	keyboard->Update();
 	const Uint8* pKeys = SDL_GetKeyboardState(nullptr);
@@ -80,9 +84,6 @@ bool dae::InputManager::ProcessInput()
 			break;
 		}
 	}
-
-	//update keyboard
-	keyboard->Update();
 
 	return true;
 }

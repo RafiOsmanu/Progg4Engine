@@ -122,7 +122,7 @@ private:
 
 			//wait until the queue is not empty
 			std::unique_lock<std::mutex> lock(m_CvMutex);
-			m_ConditionVariable.wait(lock, [this] {return !m_SoundRequests.empty(); });
+			m_ConditionVariable.wait(lock, [&] {return !m_SoundRequests.empty() || m_IsMixerClosed; });
 
 
 			if (m_IsMixerClosed)
@@ -132,6 +132,9 @@ private:
 			{
 				const SoundRequest& request = m_SoundRequests.front();
 				m_SoundRequests.pop();
+
+				//release the lock before playing the sound
+				lock.unlock();
 
 				// Requested sound is not in the list of sounds
 				if (request.id >= m_Sounds.size()) continue;

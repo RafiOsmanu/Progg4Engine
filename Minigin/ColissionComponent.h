@@ -24,12 +24,17 @@ namespace dae
 
 		virtual void Update() override;
 		virtual void Render() override;
+		
+		bool IsPlayerDead() const { return m_IsPlayerDead; }
+		void SetPlayerDead(bool isDead) { m_IsPlayerDead = isDead; }
 
 		std::weak_ptr<GameObject> GetOwner() const { return m_pOwner; }
 
 	private:
 		bool IsColliding(glm::vec2 playerPos, Cube mapCube);
+		bool IsNotColliding();
 		std::vector<Cube>& m_MapCubes;
+		bool m_IsPlayerDead{ false };
 		
 	};
 }

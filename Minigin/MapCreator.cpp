@@ -10,7 +10,7 @@ namespace dae
     }
     void MapCreator::Update()
 	{
-
+       
 	}
 
     void MapCreator::Render()
