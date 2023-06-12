@@ -55,7 +55,7 @@ bool dae::InputManager::ProcessInput()
 
 	//update keyboard
 	keyboard->Update();
-	const Uint8* pKeys = SDL_GetKeyboardState(nullptr);
+	
 	for (const auto& comm : KeyboardCommands)
 	{
 		//update command

@@ -31,8 +31,8 @@ namespace dae
 	void ColissionComponent::Render()
 	{
 		//nothing to render
-		SDL_Rect rect{ static_cast<int>(m_pOwner.lock().get()->GetLocalPosition().x + 5), static_cast<int>(m_pOwner.lock().get()->GetLocalPosition().y + 10), static_cast<int>(10), static_cast<int>(10)};
-		Renderer::GetInstance().DrawRect(rect);
+		//SDL_Rect rect{ static_cast<int>(m_pOwner.lock().get()->GetLocalPosition().x + 5), static_cast<int>(m_pOwner.lock().get()->GetLocalPosition().y + 10), static_cast<int>(10), static_cast<int>(10)};
+		//Renderer::GetInstance().DrawRect(rect);
 	}
 
 	bool ColissionComponent::IsColliding(glm::vec2 playerPos, Cube mapCube)

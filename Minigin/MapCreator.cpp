@@ -22,8 +22,8 @@ namespace dae
             Renderer::GetInstance().RenderTexture(*cube.texture, cube.position.x, cube.position.y, cube.size, cube.size);
 
             // Draw rectangle around cube
-            SDL_Rect rect{ static_cast<int>(cube.position.x), static_cast<int>(cube.position.y), static_cast<int>(cube.size), static_cast<int>(cube.size / 2) };
-            Renderer::GetInstance().DrawRect(rect);
+           // SDL_Rect rect{ static_cast<int>(cube.position.x), static_cast<int>(cube.position.y), static_cast<int>(cube.size), static_cast<int>(cube.size / 2) };
+           // Renderer::GetInstance().DrawRect(rect);
            
         }
     }
